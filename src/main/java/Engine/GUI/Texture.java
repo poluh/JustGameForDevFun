@@ -16,4 +16,12 @@ public class Texture {
         trajectory = new Trajectory(parser.getPixels());
         canvas = new Canvas(parser.getWidth(), parser.getHeight());
     }
+
+    public Trajectory getTrajectory() {
+        return trajectory;
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
+    }
 }
