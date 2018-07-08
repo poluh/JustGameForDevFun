@@ -8,13 +8,18 @@ import java.util.List;
 
 public class Parser {
 
-    private List<String> strings;
+    private int width;
+    private int height;
+    private List<Pixel> pixels;
 
     public Parser(List<String> strings) {
-        this.strings = strings;
+        var stringSpriteSize = strings.get(0).split(",");
+        height = Integer.parseInt(stringSpriteSize[0]);
+        width = Integer.parseInt(stringSpriteSize[1]);
+        pixels = parse(strings.subList(1, strings.size()));
     }
 
-    private List<Pixel> parse() {
+    private List<Pixel> parse(List<String> strings) {
         var result = new ArrayList<Pixel>();
         strings.forEach(string -> {
             for (String stringPixel : string.split("::")) {
@@ -31,5 +36,17 @@ public class Parser {
             }
         });
         return result;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public List<Pixel> getPixels() {
+        return pixels;
     }
 }
