@@ -1,5 +1,6 @@
 package Engine.GUI;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Drawer {
@@ -7,11 +8,13 @@ public class Drawer {
     private static final int PIXEL_SIZE = 1;
 
     private GraphicsContext context;
+    private Canvas canvas;
     private Texture texture;
 
     public Drawer(Texture texture) {
         this.texture = texture;
-        context = texture.getCanvas().getGraphicsContext2D();
+        canvas = texture.getCanvas();
+        context = canvas.getGraphicsContext2D();
     }
 
     public void draw() {
@@ -21,4 +24,7 @@ public class Drawer {
         });
     }
 
+    public Canvas getCanvas() {
+        return canvas;
+    }
 }
