@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Drawer {
 
-    private static final int PIXEL_SIZE = 1;
+    private static final int PIXEL_SIZE = 10;
 
     private GraphicsContext context;
     private Canvas canvas;
