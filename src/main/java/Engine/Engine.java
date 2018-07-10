@@ -8,11 +8,14 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Engine {
 
     private List<Texture> textures;
+    private static final Pattern TEXTURE_FORMAT_PATTERN = Pattern.compile(".+\\.txr");
 
     public void loadTextures(String pathToDirectoryTextures) throws IOException {
         var directory = new File(pathToDirectoryTextures);
@@ -26,8 +29,12 @@ public class Engine {
         var texturesFiles = directory.listFiles();
         if (texturesFiles == null) throw new IllegalArgumentException("Not searched texture files.");
         var texturesStrings = new ArrayList<List<String>>();
+
         for (var textureFile : texturesFiles) {
-            texturesStrings.add(Files.readAllLines(textureFile.toPath()));
+            if (TEXTURE_FORMAT_PATTERN.matcher(textureFile.getName()).matches()) {
+                var textureStrings = Files.readAllLines(textureFile.toPath());
+                texturesStrings.add(textureStrings);
+            }
         }
 
         textures = new ArrayList<>();
