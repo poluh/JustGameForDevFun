@@ -1,6 +1,7 @@
-package Engine.Parser;
+package engine.parser;
 
-import Engine.Geomentry.Pixel;
+import engine.geomentry.Pixel;
+import engine.gui.Texture;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -10,12 +11,14 @@ public class Parser {
 
     private int width;
     private int height;
+    private Texture.TextureType textureType;
     private List<Pixel> pixels;
 
     public Parser(List<String> strings) {
-        var stringSpriteSize = strings.get(0).split(",");
-        height = Integer.parseInt(stringSpriteSize[0]);
-        width = Integer.parseInt(stringSpriteSize[1]);
+        var sizeAndType = strings.get(0).split(",");
+        height = Integer.parseInt(sizeAndType[0]);
+        width = Integer.parseInt(sizeAndType[1]);
+        textureType = Texture.TextureType.valueOf(sizeAndType[2]);
         pixels = parse(strings.subList(1, strings.size()));
     }
 
@@ -46,5 +49,9 @@ public class Parser {
 
     public List<Pixel> getPixels() {
         return pixels;
+    }
+
+    public Texture.TextureType getTextureType() {
+        return textureType;
     }
 }

@@ -1,6 +1,5 @@
-package Engine.Geomentry;
+package engine.geomentry;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

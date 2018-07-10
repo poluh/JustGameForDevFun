@@ -1,4 +1,4 @@
-import Engine.Engine;
+import engine.TexturesLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -12,7 +12,7 @@ public class App extends Application {
         var scene = new Scene(group, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
-        var engine = new Engine();
+        var engine = new TexturesLoader();
         engine.loadTextures("/Users/sergejpoluhin/IdeaProjects/TextureCreator/Textures");
         group.getChildren().addAll(engine.getCanvases());
     }

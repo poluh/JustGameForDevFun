@@ -1,18 +1,17 @@
-package Engine;
+package engine;
 
-import Engine.GUI.Drawer;
-import Engine.GUI.Texture;
+import engine.gui.Drawer;
+import engine.gui.Texture;
 import javafx.scene.canvas.Canvas;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Engine {
+public class TexturesLoader {
 
     private List<Texture> textures;
     private static final Pattern TEXTURE_FORMAT_PATTERN = Pattern.compile(".+\\.txr");
