@@ -1,5 +1,7 @@
 package engine.physics;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 class BorderRectangle {
@@ -29,6 +31,7 @@ class BorderRectangle {
         }
     }
 
+    private static List<BorderRectangle> ALL_BORDER_RECTANGLES = new ArrayList<>();
     private Point upperRPoint;
     private Point bottomLPoint;
     private int height;
@@ -39,6 +42,7 @@ class BorderRectangle {
         bottomLPoint = new Point(x + w, y + h);
         height = h;
         width = w;
+        ALL_BORDER_RECTANGLES.add(this);
     }
 
     public boolean intersect(BorderRectangle other) {
