@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-class BorderRectangle {
+public class BorderRectangle {
 
     private class Point {
 
@@ -37,7 +37,7 @@ class BorderRectangle {
     private int height;
     private int width;
 
-    BorderRectangle(int x, int y, int h, int w) {
+    public BorderRectangle(int x, int y, int h, int w) {
         upperRPoint = new Point(x, y);
         bottomLPoint = new Point(x + w, y + h);
         height = h;
@@ -54,4 +54,32 @@ class BorderRectangle {
                 point.y <= this.upperRPoint.y && point.y >= this.bottomLPoint.y;
     }
 
+    public boolean anythingIntersect() {
+        for (BorderRectangle rect : ALL_BORDER_RECTANGLES) {
+            if (!rect.equals(this) && rect.intersect(this)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static List<BorderRectangle> getAllBorderRectangles() {
+        return ALL_BORDER_RECTANGLES;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BorderRectangle)) return false;
+        BorderRectangle that = (BorderRectangle) o;
+        return height == that.height &&
+                width == that.width &&
+                Objects.equals(upperRPoint, that.upperRPoint) &&
+                Objects.equals(bottomLPoint, that.bottomLPoint);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(upperRPoint, bottomLPoint, height, width);
+    }
 }

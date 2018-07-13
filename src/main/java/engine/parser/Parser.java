@@ -18,7 +18,7 @@ public class Parser {
         var sizeAndType = strings.get(0).split(",");
         height = Integer.parseInt(sizeAndType[0]);
         width = Integer.parseInt(sizeAndType[1]);
-        textureType = Texture.TextureType.valueOf(sizeAndType[2]);
+//        textureType = Texture.TextureType.valueOf(sizeAndType[2]);
         pixels = parse(strings.subList(1, strings.size()));
     }
 

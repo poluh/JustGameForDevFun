@@ -38,7 +38,9 @@ public class TexturesLoader {
 
         textures = new ArrayList<>();
         for (var textureStrings : texturesStrings) {
-            textures.add(new Texture(textureStrings));
+            var texture = new Texture(textureStrings);
+            texture.startPhysics();
+            textures.add(texture);
         }
     }
 
