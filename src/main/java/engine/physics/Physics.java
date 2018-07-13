@@ -19,11 +19,12 @@ public class Physics implements Runnable {
     @Override
     public void run() {
         var speed = 0.0;
-        var time = 0;
+        var time = 0.0;
         while (!texture.getBorderRectangle().anythingIntersect()) {
-            delay(100);
-            canvas.setLayoutY(canvas.getLayoutY() - (speed + time * ACCELERATION));
-            time++;
+            delay(50);
+            canvas.setTranslateY(canvas.getTranslateY() + speed);
+            speed += time * ACCELERATION;
+            time += 0.1;
         }
     }
 

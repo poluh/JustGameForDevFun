@@ -38,9 +38,7 @@ public class TexturesLoader {
 
         textures = new ArrayList<>();
         for (var textureStrings : texturesStrings) {
-            var texture = new Texture(textureStrings);
-            texture.startPhysics();
-            textures.add(texture);
+            textures.add(new Texture(textureStrings));
         }
     }
 
@@ -48,8 +46,10 @@ public class TexturesLoader {
         if (textures.isEmpty()) throw new IllegalArgumentException("Textures is't loaded.");
         var canvases = new ArrayList<Canvas>();
         for (var texture : textures) {
+            texture.startPhysics();
             Drawer drawer = new Drawer(texture);
             drawer.draw();
+            drawer.getCanvas().setRotate(10);
             canvases.add(drawer.getCanvas());
         }
         return canvases;
